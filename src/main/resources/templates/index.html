@@ -6,9 +6,10 @@
   <title>Home</title>
   <link rel="stylesheet" href="css/vendor/bulma/bulma.min.css">
   <link rel="stylesheet" href="css/vendor/bulma/bulma-carousel.min.css">
-  <link rel="stylesheet" href="css/vendor/fontawesome/fontawesome.css">
-  <link rel="stylesheet" href="css/vendor/fontawesome/regular.css">
-  <link rel="stylesheet" href="css/vendor/fontawesome/solid.css">
+  <link rel="stylesheet" href="css/vendor/bulma/bulma-badge.min.css">
+  <link rel="stylesheet" href="css/vendor/fontawesome/fontawesome.min.css">
+  <link rel="stylesheet" href="css/vendor/fontawesome/regular.min.css">
+  <link rel="stylesheet" href="css/vendor/fontawesome/solid.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -31,7 +32,7 @@
     <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
       <div class="container">
         <div class="navbar-brand">
-          <a class="navbar-item" href="#">
+          <a class="navbar-item" href="/">
             <img src="images/logo/logo.png" alt="Book Store logo">
           </a>
           <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
@@ -43,25 +44,25 @@
         </div>
         <div id="navbarMenuHeroA" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item has-text-warning is-active">
+            <a class="navbar-item has-text-warning is-active" href="/">
               HOME
             </a>
-            <a class="navbar-item has-text-warning">
+            <a class="navbar-item has-text-warning" href="#store">
               STORE
             </a>
             <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link has-text-warning is-arrowless">
+              <a class="navbar-link has-text-warning is-arrowless" href="#more">
                 MORE
               </a>
               <div class="navbar-dropdown is-boxed">
-                <a class="navbar-item">
+                <a class="navbar-item" href="#about">
                   About
                 </a>
-                <a class="navbar-item">
+                <a class="navbar-item" href="#contact">
                   Contact
                 </a>
                 <hr class="navbar-divider">
-                <a class="navbar-item">
+                <a class="navbar-item" href="#issue">
                   Report an issue
                 </a>
               </div>
@@ -74,23 +75,47 @@
                   </label>
                 </p>
                 <p class="control">
-                  <a class="button is-rounded has-text-white is-warning">
-                    <span class="icon"><i class="fas fa-search"></i></span>
-                  </a>
+                  <button type="submit" class="button is-rounded has-text-white is-warning">
+                    <span class="icon">
+                      <i class="fas fa-search"></i>
+                    </span>
+                  </button>
                 </p>
               </div>
             </div>
           </div>
           <div class="navbar-end">
             <div class="navbar-item">
-              <div class="buttons">
-                <a class="button is-rounded has-text-white is-info">
-                  Log in
-                </a>
-                <a class="button is-rounded has-text-white is-warning">
-                  <strong>Sign up</strong>
-                </a>
-              </div>
+              <a class="has-text-warning" href="#cart">
+                <span class="icon is-medium has-badge-rounded has-badge-danger" data-badge="3">
+                  <i class="fas fa-shopping-cart fa-lg"></i>
+                </span>
+                Cart
+              </a>
+            </div>
+            <div class="navbar-item">
+              <a class="has-text-warning" href="#accout">
+                <span class="icon is-medium">
+                  <i class="fas fa-user-circle fa-lg"></i>
+                </span>
+                Account
+              </a>
+            </div>
+            <div class="navbar-item">
+              <a class="has-text-warning" href="#sign-in">
+                  <span class="icon is-medium">
+                  <i class="fas fa-sign-in-alt fa-lg"></i>
+                  </span>
+                Sign In
+              </a>
+            </div>
+            <div class="navbar-item">
+              <a class="has-text-warning" href="#sign-out">
+                  <span class="icon is-medium">
+                  <i class="fas fa-sign-out-alt fa-lg"></i>
+                  </span>
+                Sign Out
+              </a>
             </div>
           </div>
         </div>
