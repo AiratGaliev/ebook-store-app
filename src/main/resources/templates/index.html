@@ -4,8 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Home</title>
-  <link rel="stylesheet" href="css/bulma.min.css">
-  <link rel="stylesheet" href="css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="css/vendor/bulma/bulma.min.css">
+  <link rel="stylesheet" href="css/vendor/bulma/bulma-carousel.min.css">
+  <link rel="stylesheet" href="css/vendor/fontawesome/fontawesome.css">
+  <link rel="stylesheet" href="css/vendor/fontawesome/regular.css">
+  <link rel="stylesheet" href="css/vendor/fontawesome/solid.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -55,9 +58,6 @@
                   About
                 </a>
                 <a class="navbar-item">
-                  Jobs
-                </a>
-                <a class="navbar-item">
                   Contact
                 </a>
                 <hr class="navbar-divider">
@@ -66,14 +66,28 @@
                 </a>
               </div>
             </div>
+            <div class="navbar-item">
+              <div class="field has-addons">
+                <p class="control is-expanded">
+                  <label>
+                    <input class="input is-rounded" type="text" placeholder="Search book">
+                  </label>
+                </p>
+                <p class="control">
+                  <a class="button is-rounded has-text-white is-warning">
+                    <span class="icon"><i class="fas fa-search"></i></span>
+                  </a>
+                </p>
+              </div>
+            </div>
           </div>
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="buttons">
-                <a class="button has-text-white is-info">
+                <a class="button is-rounded has-text-white is-info">
                   Log in
                 </a>
-                <a class="button has-text-white is-warning">
+                <a class="button is-rounded has-text-white is-warning">
                   <strong>Sign up</strong>
                 </a>
               </div>
@@ -83,7 +97,7 @@
       </div>
     </nav>
   </div>
-  <div class="hero-body has-text-centered">
+  <div class="hero-body">
   </div>
 </section>
 <section class="section">
@@ -102,7 +116,7 @@
           <div class="content">
             <h4>Best Sellers</h4>
             <p>Purus semper eget duis at tellus at urna condimentum mattis</p>
-            <span class="button is-link modal-button" data-target="modal-image2">Book List</span>
+            <span class="button is-rounded is-link modal-button" data-target="modal-image2">Book List</span>
           </div>
         </div>
       </div>
@@ -121,7 +135,7 @@
           <div class="content">
             <h4>Best Sellers</h4>
             <p>Purus semper eget duis at tellus at urna condimentum mattis</p>
-            <span class="button is-link modal-button" data-target="modal-image2">Book List</span>
+            <span class="button is-rounded is-link modal-button" data-target="modal-image2">Book List</span>
           </div>
         </div>
       </div>
@@ -140,7 +154,7 @@
           <div class="content">
             <h4>Best Sellers</h4>
             <p>Purus semper eget duis at tellus at urna condimentum mattis</p>
-            <span class="button is-link modal-button" data-target="modal-image2">Book List</span>
+            <span class="button is-rounded is-link modal-button" data-target="modal-image2">Book List</span>
           </div>
         </div>
       </div>
@@ -250,7 +264,10 @@
 
   </div>
 </section>
-<script src="js/bulma-carousel.min.js"></script>
+<script src="js/vendor/bulma/bulma-carousel.min.js"></script>
+<script src="js/vendor/fontawesome/fontawesome.min.js"></script>
+<script src="js/vendor/fontawesome/regular.min.js"></script>
+<script src="js/vendor/fontawesome/solid.min.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
