@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,118 +13,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="page-top is-primary"></div>
-<section class="hero is-large has-carousel">
-  <div class="hero-carousel">
-    <div class='has-background is-active'>
-      <figure class="image">
-        <img class="is-background" src="images/slide-1.jpg" alt=""/>
-      </figure>
-    </div>
-    <div class='has-background'>
-      <img class="is-background" src="images/slide-2.jpg" alt=""/>
-    </div>
-    <div class='has-background'>
-      <img class="is-background" src="images/slide-3.jpg" alt=""/>
-    </div>
-  </div>
-  <div class="hero-head">
-    <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
-      <div class="container">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="/">
-            <img src="images/logo/logo.png" alt="Book Store logo">
-          </a>
-          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-             data-target="navbarMenuHeroA">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-        <div id="navbarMenuHeroA" class="navbar-menu">
-          <div class="navbar-start">
-            <a class="navbar-item has-text-warning is-active" href="/">
-              HOME
-            </a>
-            <a class="navbar-item has-text-warning" href="#store">
-              STORE
-            </a>
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link has-text-warning is-arrowless" href="#more">
-                MORE
-              </a>
-              <div class="navbar-dropdown is-boxed">
-                <a class="navbar-item" href="#about">
-                  About
-                </a>
-                <a class="navbar-item" href="#contact">
-                  Contact
-                </a>
-                <hr class="navbar-divider">
-                <a class="navbar-item" href="#issue">
-                  Report an issue
-                </a>
-              </div>
-            </div>
-            <div class="navbar-item">
-              <div class="field has-addons">
-                <p class="control is-expanded">
-                  <label>
-                    <input class="input is-rounded" type="text" placeholder="Search book">
-                  </label>
-                </p>
-                <p class="control">
-                  <button type="submit" class="button is-rounded has-text-white is-warning">
-                    <span class="icon">
-                      <i class="fas fa-search"></i>
-                    </span>
-                  </button>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <a class="has-text-warning" href="#cart">
-                <span class="icon is-medium has-badge-rounded has-badge-danger" data-badge="3">
-                  <i class="fas fa-shopping-cart fa-lg"></i>
-                </span>
-                Cart
-              </a>
-            </div>
-            <div class="navbar-item">
-              <a class="has-text-warning" href="#accout">
-                <span class="icon is-medium">
-                  <i class="fas fa-user-circle fa-lg"></i>
-                </span>
-                Account
-              </a>
-            </div>
-            <div class="navbar-item">
-              <a class="has-text-warning" href="#sign-in">
-                  <span class="icon is-medium">
-                  <i class="fas fa-sign-in-alt fa-lg"></i>
-                  </span>
-                Sign In
-              </a>
-            </div>
-            <div class="navbar-item">
-              <a class="has-text-warning" href="#sign-out">
-                  <span class="icon is-medium">
-                  <i class="fas fa-sign-out-alt fa-lg"></i>
-                  </span>
-                Sign Out
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-  </div>
-  <div class="hero-body">
-  </div>
-</section>
+<div th:replace="common/header :: header"></div>
 <section class="section">
   <div class="columns is-desktop is-multiline is-centered">
     <div class="column is-3">
@@ -185,11 +74,9 @@
       </div>
     </div>
   </div>
-  <div class="container">
-    <h1 class="title has-text-centered">Featured books</h1>
-  </div>
 </section>
 <section class="container">
+  <h1 class="title has-text-centered">Featured books</h1>
   <div id="slider2">
     <div class="card">
       <div class="card-image">
