@@ -1,4 +1,15 @@
 .page-top {
   height: 1rem;
-  background-color: #209cee;
+  background-color: royalblue;
+}
+
+.navbar {
+  height: 50px;
+  background: rgba(54, 54, 54, 0.75);
+}
+
+.hero {
+  position: relative;
+  top: -52px;
+  min-height: 250px;
 }

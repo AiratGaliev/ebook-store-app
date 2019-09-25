@@ -1,20 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<head th:replace="common/header::header">
   <title>Home</title>
-  <link rel="icon" type="image/ico" href="images/favicon.ico">
-  <link rel="stylesheet" href="css/vendor/bulma/bulma.min.css">
-  <link rel="stylesheet" href="css/vendor/bulma/bulma-carousel.min.css">
-  <link rel="stylesheet" href="css/vendor/bulma/bulma-badge.min.css">
-  <link rel="stylesheet" href="css/vendor/fontawesome/fontawesome.min.css">
-  <link rel="stylesheet" href="css/vendor/fontawesome/regular.min.css">
-  <link rel="stylesheet" href="css/vendor/fontawesome/solid.min.css">
-  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div th:replace="common/header :: header"></div>
+<div th:replace="common/navbar::navbar"></div>
+<div class="hero is-large has-carousel">
+  <div class="hero-carousel">
+    <div class='has-background'>
+      <img class="is-background" src="images/slide-1.jpg" alt=""/>
+    </div>
+    <div class='has-background'>
+      <img class="is-background" src="images/slide-2.jpg" alt=""/>
+    </div>
+    <div class='has-background'>
+      <img class="is-background" src="images/slide-3.jpg" alt=""/>
+    </div>
+    <div class='has-background'>
+      <img class="is-background" src="images/slide-4.jpg" alt=""/>
+    </div>
+    <div class='has-background'>
+      <img class="is-background" src="images/slide-5.jpg" alt=""/>
+    </div>
+  </div>
+  <div class="hero-head">
+  </div>
+  <div class="hero-body">
+  </div>
+</div>
 <section class="section">
   <div class="columns is-desktop is-multiline is-centered">
     <div class="column is-3">
@@ -76,7 +89,7 @@
     </div>
   </div>
 </section>
-<section class="container">
+<section class="section">
   <h1 class="title has-text-centered">Featured books</h1>
   <div id="slider2">
     <div class="card">
@@ -174,13 +187,8 @@
         </div>
       </div>
     </div>
-
   </div>
 </section>
-<script src="js/vendor/bulma/bulma-carousel.min.js"></script>
-<script src="js/vendor/fontawesome/fontawesome.min.js"></script>
-<script src="js/vendor/fontawesome/regular.min.js"></script>
-<script src="js/vendor/fontawesome/solid.min.js"></script>
-<script src="js/main.js"></script>
+<div th:replace="common/footer::footer"></div>
 </body>
 </html>
