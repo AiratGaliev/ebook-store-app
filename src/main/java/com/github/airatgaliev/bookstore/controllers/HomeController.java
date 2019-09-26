@@ -11,8 +11,33 @@ public class HomeController {
     return "index";
   }
 
+  @RequestMapping("/store")
+  public String store() {
+    return "store";
+  }
+
+  @RequestMapping("/sign-in")
+  public String signIn() {
+    return "sign-in";
+  }
+
   @RequestMapping("/account")
   public String account() {
     return "account";
+  }
+
+  @RequestMapping("/about")
+  public String about() {
+    return "about";
+  }
+
+  @RequestMapping("/contact")
+  public String contact() {
+    return "contact";
+  }
+
+  @RequestMapping("/cart")
+  public String cart() {
+    return "cart";
   }
 }
