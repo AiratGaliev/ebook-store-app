@@ -45,4 +45,9 @@ public class HomeController {
   public String cart() {
     return "cart";
   }
+
+  @RequestMapping("/reset-pass")
+  public String resetPass() {
+    return "reset-pass";
+  }
 }

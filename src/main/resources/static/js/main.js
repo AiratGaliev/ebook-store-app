@@ -106,8 +106,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if ($checkboxes.length > 0) {
     $checkboxes.forEach($el => {
+      const target = $el.dataset.target;
+      if ($el.checked === true) {
+        enableFieldset(target);
+      } else {
+        disableFieldset(target);
+      }
       $el.addEventListener('click', () => {
-        const target = $el.dataset.target;
         if ($el.checked === true) {
           enableFieldset(target);
         } else {
