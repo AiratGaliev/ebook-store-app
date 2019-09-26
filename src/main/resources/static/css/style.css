@@ -13,3 +13,7 @@
   top: -52px;
   min-height: 250px;
 }
+
+section.container {
+  padding: 1rem 0 1rem 0;
+}

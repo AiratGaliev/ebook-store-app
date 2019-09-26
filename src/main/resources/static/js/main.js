@@ -89,6 +89,33 @@ document.addEventListener('DOMContentLoaded', () => {
       closeDropdowns();
     }
   });
+
+  // Checkboxes
+
+  const $checkboxes = getAll('#checkbox');
+
+  function enableFieldset(target) {
+    const $target = document.getElementById(target);
+    $target.removeAttribute('disabled');
+  }
+
+  function disableFieldset(target) {
+    const $target = document.getElementById(target);
+    $target.setAttribute('disabled', '');
+  }
+
+  if ($checkboxes.length > 0) {
+    $checkboxes.forEach($el => {
+      $el.addEventListener('click', () => {
+        const target = $el.dataset.target;
+        if ($el.checked === true) {
+          enableFieldset(target);
+        } else {
+          disableFieldset(target);
+        }
+      })
+    });
+  }
   //
   // // Cookies
   //
