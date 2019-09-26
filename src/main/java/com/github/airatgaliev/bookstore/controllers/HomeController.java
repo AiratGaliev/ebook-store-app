@@ -21,6 +21,11 @@ public class HomeController {
     return "sign-in";
   }
 
+  @RequestMapping("/sign-up")
+  public String signUp() {
+    return "sign-up";
+  }
+
   @RequestMapping("/account")
   public String account() {
     return "account";

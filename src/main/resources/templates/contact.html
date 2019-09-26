@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="common/header::header">
-  <title>Contact</title>
+<head>
+  <meta th:replace="common/header::meta">
+  <title>Book Store - Contact</title>
+  <link th:replace="common/header::link">
 </head>
 <body>
 <div th:replace="common/navbar::navbar"></div>
 <section class="container">
   <h2 class="title">Contact</h2>
 </section>
-<div th:replace="common/footer::footer"></div>
+<script th:replace="common/footer::footer"></script>
 </body>
 </html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta th:replace="common/header::meta">
+  <title>Book Store - Sign Up</title>
+  <link th:replace="common/header::link">
+</head>
+<body>
+<div th:replace="common/navbar::navbar"></div>
+<section class="hero is-info">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title">Sign Up</h2>
+      <h5 class="subtitle">Fill in all the fields to register, please.</h5>
+    </div>
+  </div>
+</section>
+<section class="container">
+  <div class="field">
+    <label class="label">Full Name</label>
+    <div class="control">
+      <label>
+        <input class="input" type="text" placeholder="e.g Airat Galiev">
+      </label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Username</label>
+    <div class="control has-icons-left has-icons-right">
+      <input class="input is-success" type="text" placeholder="e.g airat" value="airat">
+      <span class="icon is-small is-left">
+      <i class="fas fa-user"></i>
+    </span>
+      <span class="icon is-small is-right">
+      <i class="fas fa-check"></i>
+    </span>
+    </div>
+    <p class="help is-success">This username is available</p>
+  </div>
+
+  <div class="field">
+    <label class="label">Email</label>
+    <p class="control has-icons-left has-icons-right">
+      <input class="input is-danger" type="email" placeholder="e.g airat.galiev@gmail.com"
+             value="hello@">
+      <span class="icon is-small is-left">
+      <i class="fas fa-envelope"></i>
+    </span>
+      <span class="icon is-small is-right">
+      <i class="fas fa-exclamation-triangle"></i>
+    </span>
+    </p>
+    <p class="help is-danger">This email is invalid</p>
+  </div>
+
+  <div class="field">
+    <label class="label">Password</label>
+    <p class="control has-icons-left">
+      <input class="input" type="password" placeholder="e.g P@$$w0rD">
+      <span class="icon is-small is-left">
+      <i class="fas fa-lock"></i>
+    </span>
+    </p>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <label class="checkbox">
+        <input type="checkbox">
+        I agree to the <a class="modal-button" data-target="modal-ter" aria-haspopup="true">
+        terms and conditions</a>
+      </label>
+    </div>
+  </div>
+
+  <div id="modal-ter" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Terms and conditions</p>
+        <button class="delete" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body">
+        <div class="content">
+          <h1 class="title">Hi!</h1>
+          <h2 class="subtitle">Do not enter real data about yourself!</h2>
+        </div>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">OK</button>
+      </footer>
+    </div>
+  </div>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <button class="button is-link">Sign Up</button>
+    </div>
+  </div>
+</section>
+<script th:replace="common/footer::footer"></script>
+</body>
+</html>

@@ -8,7 +8,7 @@
   background: rgba(54, 54, 54, 0.75);
 }
 
-.hero {
+.hero.has-carousel {
   position: relative;
   top: -52px;
   min-height: 250px;
