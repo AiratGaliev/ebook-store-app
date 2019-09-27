@@ -9,15 +9,15 @@ import org.springframework.stereotype.Component;
 @Component
 public interface SecurityUtility {
 
-  static final String SALT = "salt";
+  String SALT = "salt";
 
   @Bean
-  public static BCryptPasswordEncoder passwordEncoder() {
+  static BCryptPasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder(12, new SecureRandom(SALT.getBytes()));
   }
 
   @Bean
-  public static String randomPassword() {
+  static String randomPassword() {
     String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
     StringBuilder salt = new StringBuilder();
     Random rnd = new Random();
