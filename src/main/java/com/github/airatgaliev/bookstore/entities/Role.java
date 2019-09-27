@@ -15,7 +15,7 @@ public class Role {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private long id;
+  private long roleId;
   private String name;
   @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   private Set<UserRole> userRoleSet = new HashSet<>();

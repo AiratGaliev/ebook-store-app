@@ -25,7 +25,7 @@ public class User implements UserDetails {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(nullable = false, updatable = false, unique = true)
-  private long id;
+  private long userId;
   @Column(nullable = false, updatable = false, unique = true)
   private String username;
   @Column(nullable = false)
@@ -52,7 +52,7 @@ public class User implements UserDetails {
   }
 
   public long getId() {
-    return id;
+    return userId;
   }
 
   public String getUsername() {
@@ -139,7 +139,7 @@ public class User implements UserDetails {
       return false;
     }
     User user = (User) o;
-    return id == user.id &&
+    return userId == user.userId &&
         isEnabled == user.isEnabled &&
         username.equals(user.username) &&
         password.equals(user.password) &&
@@ -151,6 +151,7 @@ public class User implements UserDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, username, password, email, phoneNumber, firstName, lastName, isEnabled);
+    return Objects
+        .hash(userId, username, password, email, phoneNumber, firstName, lastName, isEnabled);
   }
 }

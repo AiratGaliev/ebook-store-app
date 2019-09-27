@@ -1,10 +1,16 @@
 package com.github.airatgaliev.bookstore.controllers;
 
+import com.github.airatgaliev.bookstore.entities.PasswordResetToken;
+import com.github.airatgaliev.bookstore.services.IUserService;
+import java.util.Locale;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
+
+  private IUserService userService;
 
   @RequestMapping("/")
   public String index() {
@@ -47,7 +53,8 @@ public class HomeController {
   }
 
   @RequestMapping("/reset-pass")
-  public String resetPass() {
+  public String resetPass(Locale locale, @RequestParam("token") String token) {
+    PasswordResetToken passwordResetToken = userService.getPasswordResetToken(token);
     return "reset-pass";
   }
 }
