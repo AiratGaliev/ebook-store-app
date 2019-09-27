@@ -29,7 +29,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   }
 
   private static final String[] PUBLIC_MATCHERS = {
-      "/css/**", "/js/**", "/images/**", "/", "/store", "/about", "/contact", "/sign-up"
+      "/css/**", "/js/**", "/images/**", "/", "/store", "/about", "/contact", "/sign-up",
+      "/reset-pass", "/h2-console/**"
   };
 
   @Override
@@ -45,6 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .logoutSuccessUrl("/?sign-out").deleteCookies("remember-me").permitAll()
         .and()
         .rememberMe();
+    httpSecurity.headers().frameOptions().sameOrigin();
   }
 
   @Autowired

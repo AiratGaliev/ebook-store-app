@@ -7,8 +7,18 @@
 </head>
 <body>
 <div th:replace="common/navbar::navbar"></div>
+<section class="hero is-info">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title">
+        <!--        <span th:text="${#strings.toUpperCase(user.username)}"></span>-->
+      </h2>
+      <h5 class="subtitle">Fill in all the fields to login, please.</h5>
+    </div>
+  </div>
+</section>
 <section class="container">
-  <h2 class="title">My account</h2>
+
 </section>
 <script th:replace="common/footer::footer"></script>
 </body>
