@@ -123,6 +123,10 @@ public class User implements UserDetails {
     return isEnabled;
   }
 
+  public void setEnabled(boolean enabled) {
+    isEnabled = enabled;
+  }
+
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
     Set<GrantedAuthority> grantedAuthorities = new HashSet<>();

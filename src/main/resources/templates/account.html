@@ -7,75 +7,75 @@
 </head>
 <body>
 <div th:replace="common/navbar::navbar"></div>
-<section class="hero is-info">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">
-        <span th:text="${#strings.toString(user.username)}"></span>
-      </h2>
-      <h5 class="subtitle">Fill in all the fields to login, please.</h5>
-    </div>
-  </div>
-</section>
-<section class="container">
-  <div class="field">
-    <div class="control">
-      <label for="checkbox" class="checkbox">
-        <input id="checkbox" name="checkbox" data-target="fieldset-check" type="checkbox">
-      </label>
-      I agree to the <a class="modal-button" data-target="modal-ter" aria-haspopup="true"> terms
-      and conditions</a>
-    </div>
-  </div>
-  <div id="modal-ter" class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Terms and conditions</p>
-        <button class="delete" aria-label="close"></button>
-      </header>
-      <section class="modal-card-body">
-        <div class="content">
-          <h1 class="title">Hi!</h1>
-          <h2 class="subtitle">Don't enter real data about yourself!</h2>
-        </div>
-      </section>
-      <footer class="modal-card-foot">
-        <button class="button is-success">OK</button>
-      </footer>
-    </div>
-  </div>
+<!--<section class="hero is-info">-->
+<!--  <div class="hero-body">-->
+<!--    <div class="container">-->
+<!--      <h2 class="title">-->
+<!--        <span th:text="${#strings.toString(user.username)}"></span>-->
+<!--      </h2>-->
+<!--      <h5 class="subtitle">Fill in all the fields to login, please.</h5>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
+<!--<section class="container">-->
+<!--  <div class="field">-->
+<!--    <div class="control">-->
+<!--      <label for="checkbox" class="checkbox">-->
+<!--        <input id="checkbox" name="checkbox" data-target="fieldset-check" type="checkbox">-->
+<!--      </label>-->
+<!--      I agree to the <a class="modal-button" data-target="modal-ter" aria-haspopup="true"> terms-->
+<!--      and conditions</a>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div id="modal-ter" class="modal">-->
+<!--    <div class="modal-background"></div>-->
+<!--    <div class="modal-card">-->
+<!--      <header class="modal-card-head">-->
+<!--        <p class="modal-card-title">Terms and conditions</p>-->
+<!--        <button class="delete" aria-label="close"></button>-->
+<!--      </header>-->
+<!--      <section class="modal-card-body">-->
+<!--        <div class="content">-->
+<!--          <h1 class="title">Hi!</h1>-->
+<!--          <h2 class="subtitle">Don't enter real data about yourself!</h2>-->
+<!--        </div>-->
+<!--      </section>-->
+<!--      <footer class="modal-card-foot">-->
+<!--        <button class="button is-success">OK</button>-->
+<!--      </footer>-->
+<!--    </div>-->
+<!--  </div>-->
 
-  <fieldset id="fieldset-check" disabled>
-    <form th:action="@{/sign-up}" method="post">
-      <div class="field">
-        <label for="firstName" class="label">First Name</label>
-        <div class="control">
-          <label>
-            <input id="firstName" class="input" name="firstName" type="text" placeholder="e.g John"
-                   th:value="${user.firstName}">
-          </label>
-        </div>
-      </div>
+<!--  <fieldset id="fieldset-check" disabled>-->
+<!--    <form th:action="@{/sign-up}" method="post">-->
+<!--      <div class="field">-->
+<!--        <label for="firstName" class="label">First Name</label>-->
+<!--        <div class="control">-->
+<!--          <label>-->
+<!--            <input id="firstName" class="input" name="firstName" type="text" placeholder="e.g John"-->
+<!--                   th:value="${user.firstName}">-->
+<!--          </label>-->
+<!--        </div>-->
+<!--      </div>-->
 
-      <div class="field">
-        <label for="lastName" class="label">Last Name</label>
-        <div class="control">
-          <label>
-            <input id="lastName" class="input" name="lastName" type="text" placeholder="e.g Doe"
-                   th:value="${user.lastName}">
-          </label>
-        </div>
-      </div>
+<!--      <div class="field">-->
+<!--        <label for="lastName" class="label">Last Name</label>-->
+<!--        <div class="control">-->
+<!--          <label>-->
+<!--            <input id="lastName" class="input" name="lastName" type="text" placeholder="e.g Doe"-->
+<!--                   th:value="${user.lastName}">-->
+<!--          </label>-->
+<!--        </div>-->
+<!--      </div>-->
 
-      <div class="field is-grouped">
-        <div class="control">
-          <button class="button is-link" type="submit">Save</button>
-        </div>
-      </div>
-    </form>
-  </fieldset>
-</section>
+<!--      <div class="field is-grouped">-->
+<!--        <div class="control">-->
+<!--          <button class="button is-link" type="submit">Save</button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </form>-->
+<!--  </fieldset>-->
+<!--</section>-->
 <script th:replace="common/footer::footer"></script>
 </body>
 </html>

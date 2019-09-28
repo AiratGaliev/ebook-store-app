@@ -16,35 +16,40 @@
   </div>
 </section>
 <section class="container">
-  <form th:action="@{/sign-in}" method="post">
-    <div class="field">
-      <label for="username" class="label">Username *</label>
-      <p class="control has-icons-left has-icons-right">
-        <input id="username" class="input" name="username" type="text">
-        <span class="icon is-small is-left">
-      <i class="fas fa-user"></i>
-    </span>
-        <span class="icon is-small is-right">
-      <i class="fas fa-check"></i>
-    </span>
-      </p>
-    </div>
-    <div class="field">
-      <label for="password" class="label">Password *</label>
-      <p class="control has-icons-left">
-        <input id="password" class="input" name="password" type="password">
-        <span class="icon is-small is-left">
-      <i class="fas fa-lock"></i>
-    </span>
-      </p>
-    </div>
-    <a href="/forget-password">Forgot Password?</a>
-    <div class="field">
-      <p class="control">
-        <button class="button is-success" type="submit"> Sign In</button>
-      </p>
-    </div>
-  </form>
+  <fieldset>
+    <p th:if="${param.error != null}" class="help is-danger">Incorrect username or password</p>
+    <form th:action="@{/sign-in}" method="post">
+      <div class="field">
+        <label for="username" class="label">Username *</label>
+        <div class="control has-icons-left has-icons-right">
+          <input id="username" class="input"
+                 name="username"
+                 type="text">
+          <span class="icon is-small is-left">
+              <i class="fas fa-user"></i>
+            </span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="password" class="label">Password *</label>
+        <div class="control has-icons-left">
+          <input id="password" class="input" name="password" type="password">
+          <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+        </div>
+      </div>
+
+      <a href="/forget-password">Forgot Password?</a>
+
+      <div class="field">
+        <div class="control">
+          <button class="button is-link" type="submit">Sign In</button>
+        </div>
+      </div>
+    </form>
+  </fieldset>
 </section>
 <script th:replace="common/footer::footer"></script>
 </body>

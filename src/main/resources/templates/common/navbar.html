@@ -93,7 +93,7 @@
           </a>
         </div>
         <div class="navbar-item" sec:authorize="isAuthenticated()">
-          <a class="has-text-warning" href="#sign-out">
+          <a class="has-text-warning" th:href="@{/sign-out}">
                   <span class="icon is-medium">
                   <i class="fas fa-sign-out-alt fa-lg"></i>
                   </span>
