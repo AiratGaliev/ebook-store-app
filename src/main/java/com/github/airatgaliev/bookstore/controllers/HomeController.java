@@ -9,13 +9,16 @@ import com.github.airatgaliev.bookstore.services.UserSecurityService;
 import com.github.airatgaliev.bookstore.utility.MailConstructor;
 import com.github.airatgaliev.bookstore.utility.SecurityUtility;
 import java.util.HashSet;
-import java.util.Locale;
 import java.util.Set;
 import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -66,23 +69,18 @@ public class HomeController {
     model.addAttribute("username", username);
     model.addAttribute("email", email);
     model.addAttribute("password", password);
-
     if (userService.isFoundedUserByUsername(username)) {
       model.addAttribute("usernameExists", true);
-      return "sign-up";
+      return "redirect:/sign-in";
     }
-
     if (userService.isFoundedUserByEmail(email)) {
-      model.addAttribute("emailExists", true);
-      return "sign-up";
+      model.addAttribute("email", true);
+      return "redirect:/sign-in";
     }
-
     String encryptedPassword = SecurityUtility.passwordEncoder().encode(password);
-
     User user = new User(username, email, encryptedPassword);
     user.setFirstName(firstName);
     user.setLastName(lastName);
-
     Role role = new Role();
     role.setRoleId(1);
     role.setName("USER_ROLE");
@@ -98,12 +96,26 @@ public class HomeController {
         .constructResetTokenEmail(appUrl, servletRequest.getLocale(), token, user, password);
     mailSender.send(mailMessage);
     model.addAttribute("emailSent", "true");
-    return "account";
+    return "redirect:/";
   }
 
-  @RequestMapping("/sign-up")
-  public String signUp() {
-    return "sign-up";
+  @RequestMapping(value = "/sign-up", method = RequestMethod.GET)
+  public String signUp(@RequestParam(required = false, name = "token") String token, Model model) {
+    PasswordResetToken passwordResetToken = userService.getPasswordResetToken(token);
+    if (passwordResetToken == null) {
+      String message = "Invalid token";
+      model.addAttribute("message", message);
+      return "sign-up";
+    } else {
+      User user = passwordResetToken.getUser();
+      String username = user.getUsername();
+      UserDetails userDetails = userSecurityService.loadUserByUsername(username);
+      Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails,
+          userDetails.getUsername(), userDetails.getAuthorities());
+      SecurityContextHolder.getContext().setAuthentication(authentication);
+      model.addAttribute("user", user);
+      return "redirect:/sign-in";
+    }
   }
 
   @RequestMapping("/account")
@@ -127,8 +139,7 @@ public class HomeController {
   }
 
   @RequestMapping("/reset-pass")
-  public String resetPass(Locale locale, @RequestParam("token") String token) {
-    PasswordResetToken passwordResetToken = userService.getPasswordResetToken(token);
+  public String resetPass() {
     return "reset-pass";
   }
 }

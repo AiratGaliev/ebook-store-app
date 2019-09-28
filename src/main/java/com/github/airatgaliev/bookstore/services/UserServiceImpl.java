@@ -7,11 +7,15 @@ import com.github.airatgaliev.bookstore.repositories.IPasswordResetTokenReposito
 import com.github.airatgaliev.bookstore.repositories.IRoleRepository;
 import com.github.airatgaliev.bookstore.repositories.IUserRepository;
 import java.util.Set;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements IUserService {
+
+  private static final Logger LOG = LoggerFactory.getLogger(IUserService.class);
 
   @Autowired
   private IUserRepository userRepository;
@@ -38,7 +42,7 @@ public class UserServiceImpl implements IUserService {
     User localUser = userRepository.findByUsername(user.getUsername());
 
     if (localUser != null) {
-      throw new Exception("User already exists. Nothing will be done");
+      LOG.info("User {} already exists. Nothing will be done", user.getUsername());
     } else {
       for (UserRole userRole : userRoles) {
         roleRepository.save(userRole.getRole());
