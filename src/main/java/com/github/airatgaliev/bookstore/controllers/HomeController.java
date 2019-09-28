@@ -71,11 +71,11 @@ public class HomeController {
     model.addAttribute("password", password);
     if (userService.isFoundedUserByUsername(username)) {
       model.addAttribute("usernameExists", true);
-      return "redirect:/sign-in";
+      return "sign-up";
     }
     if (userService.isFoundedUserByEmail(email)) {
-      model.addAttribute("email", true);
-      return "redirect:/sign-in";
+      model.addAttribute("emailExists", true);
+      return "sign-up";
     }
     String encryptedPassword = SecurityUtility.passwordEncoder().encode(password);
     User user = new User(username, email, encryptedPassword);

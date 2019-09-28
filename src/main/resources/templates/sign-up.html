@@ -67,32 +67,36 @@
       <div class="field">
         <label for="username" class="label">Username *</label>
         <div class="control has-icons-left has-icons-right">
-          <input id="username" class="input is-success" name="username" type="text"
-                 placeholder="e.g john" value="john">
+          <input id="username" class="input" th:classappend="${usernameExists}? 'is-danger'"
+                 name="username"
+                 type="text"
+                 placeholder="e.g johndoe"
+                 th:value="${username}">
           <span class="icon is-small is-left">
       <i class="fas fa-user"></i>
     </span>
-          <span class="icon is-small is-right">
-      <i class="fas fa-check"></i>
-    </span>
+          <span th:if="${usernameExists}" class="icon is-small is-right">
+            <i class="fas fa-exclamation-triangle"></i>
+          </span>
         </div>
-        <p class="help is-success">This username is available</p>
+        <p th:if="${usernameExists}" class="help is-danger">This username is available</p>
       </div>
 
       <div class="field">
         <label for="email" class="label">Email *</label>
         <p class="control has-icons-left has-icons-right">
-          <input id="email" class="input is-danger" name="email" type="email"
+          <input id="email" class="input" th:classappend="${emailExists}? 'is-danger'" name="email"
+                 type="email"
                  placeholder="e.g johndoe@mail.com"
-                 value="hello@">
+                 th:value="${email}">
           <span class="icon is-small is-left">
       <i class="fas fa-envelope"></i>
     </span>
-          <span class="icon is-small is-right">
-      <i class="fas fa-exclamation-triangle"></i>
-    </span>
+          <span th:if="${emailExists}" class="icon is-small is-right">
+            <i class="fas fa-exclamation-triangle"></i>
+          </span>
         </p>
-        <p class="help is-danger">This email is invalid</p>
+        <p th:if="${emailExists}" class="help is-danger">This email already exists</p>
       </div>
 
       <div class="field">
