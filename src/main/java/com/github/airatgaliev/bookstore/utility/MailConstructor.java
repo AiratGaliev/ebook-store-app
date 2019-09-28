@@ -16,7 +16,8 @@ public class MailConstructor {
   public SimpleMailMessage constructResetTokenEmail(String appUrl, Locale locale, String token,
       User user, String password) {
     String url = appUrl + "/sign-up?token=" + token;
-    String message = "\nPlease click on this link to verify your email";
+    String message =
+        "\nPlease click on this link to verify your email. \n Your password is: " + password;
     SimpleMailMessage email = new SimpleMailMessage();
     email.setTo(user.getEmail());
     email.setSubject("Book Store - Sign Up");

@@ -114,7 +114,7 @@ public class HomeController {
           userDetails.getUsername(), userDetails.getAuthorities());
       SecurityContextHolder.getContext().setAuthentication(authentication);
       model.addAttribute("user", user);
-      return "redirect:/sign-in";
+      return "profile";
     }
   }
 
@@ -138,8 +138,13 @@ public class HomeController {
     return "cart";
   }
 
-  @RequestMapping("/reset-pass")
-  public String resetPass() {
-    return "reset-pass";
+  @RequestMapping("/forget-password")
+  public String forgetPassword() {
+    return "forget-password";
+  }
+
+  @RequestMapping("/reset-password")
+  public String resetPassword() {
+    return "reset-password";
   }
 }
