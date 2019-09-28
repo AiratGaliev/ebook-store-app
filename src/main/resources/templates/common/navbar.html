@@ -60,40 +60,40 @@
         </div>
       </div>
       <div class="navbar-end">
-        <div class="navbar-item">
-          <a sec:authorize="isAuthenticated()" class="has-text-warning" th:href="@{/cart}">
+        <div class="navbar-item" sec:authorize="isAuthenticated()">
+          <a class="has-text-warning" th:href="@{/cart}">
                 <span class="icon is-medium has-badge-rounded has-badge-danger" data-badge="3">
                   <i class="fas fa-shopping-cart fa-lg"></i>
                 </span>
             Cart
           </a>
         </div>
-        <div class="navbar-item">
-          <a sec:authorize="isAuthenticated()" class="has-text-warning" th:href="@{/account}">
+        <div class="navbar-item" sec:authorize="isAuthenticated()">
+          <a class="has-text-warning" th:href="@{/account}">
                 <span class="icon is-medium">
                   <i class="fas fa-user-circle fa-lg"></i>
                 </span>
             Account
           </a>
         </div>
-        <div class="navbar-item">
-          <a sec:authorize="isAnonymous()" class="has-text-warning" th:href="@{/sign-in}">
+        <div class="navbar-item" sec:authorize="isAnonymous()">
+          <a class="has-text-warning" th:href="@{/sign-in}">
                   <span class="icon is-medium">
                   <i class="fas fa-sign-in-alt fa-lg"></i>
                   </span>
             Sign In
           </a>
         </div>
-        <div class="navbar-item">
-          <a sec:authorize="isAnonymous()" class="has-text-warning" th:href="@{/sign-up}">
+        <div class="navbar-item" sec:authorize="isAnonymous()">
+          <a class="has-text-warning" th:href="@{/sign-up}">
                   <span class="icon is-medium">
                   <i class="fas fa-file-signature fa-lg"></i>
                   </span>
             Sign Up
           </a>
         </div>
-        <div class="navbar-item">
-          <a sec:authorize="isAuthenticated()" class="has-text-warning" href="#sign-out">
+        <div class="navbar-item" sec:authorize="isAuthenticated()">
+          <a class="has-text-warning" href="#sign-out">
                   <span class="icon is-medium">
                   <i class="fas fa-sign-out-alt fa-lg"></i>
                   </span>
