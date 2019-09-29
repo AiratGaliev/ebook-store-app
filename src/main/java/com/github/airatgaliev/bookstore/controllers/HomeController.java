@@ -21,25 +21,33 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
 
-  @Autowired
-  private IUserService userService;
+  private final IUserService userService;
+
+  private final UserSecurityService userSecurityService;
+
+  private final JavaMailSender mailSender;
+
+  private final MailConstructor mailConstructor;
 
   @Autowired
-  private UserSecurityService userSecurityService;
-
-  @Autowired
-  private JavaMailSender mailSender;
-
-  @Autowired
-  private MailConstructor mailConstructor;
+  public HomeController(IUserService userService,
+      UserSecurityService userSecurityService,
+      JavaMailSender mailSender,
+      MailConstructor mailConstructor) {
+    this.userService = userService;
+    this.userSecurityService = userSecurityService;
+    this.mailSender = mailSender;
+    this.mailConstructor = mailConstructor;
+  }
 
   @RequestMapping("/")
   public String index() {
@@ -56,7 +64,7 @@ public class HomeController {
     return "sign-in";
   }
 
-  @RequestMapping(value = "/sign-up", method = RequestMethod.POST)
+  @PostMapping(value = "/sign-up")
   public String signUpPost(HttpServletRequest servletRequest,
       @ModelAttribute("firstName") String firstName,
       @ModelAttribute("lastName") String lastName,
@@ -99,7 +107,7 @@ public class HomeController {
     return "redirect:/";
   }
 
-  @RequestMapping(value = "/sign-up", method = RequestMethod.GET)
+  @GetMapping(value = "/sign-up")
   public String signUp(@RequestParam(required = false, name = "token") String token, Model model) {
     PasswordResetToken passwordResetToken = userService.getPasswordResetToken(token);
     if (passwordResetToken == null) {
@@ -138,7 +146,7 @@ public class HomeController {
     return "cart";
   }
 
-  @RequestMapping(value = "/forget-password", method = RequestMethod.POST)
+  @PostMapping(value = "/forget-password")
   public String forgetPassword(@ModelAttribute("email") String email, Model model) {
     if (!userService.isFoundedUserByEmail(email)) {
       model.addAttribute("emailNotFound", true);
@@ -155,7 +163,7 @@ public class HomeController {
     }
   }
 
-  @RequestMapping(value = "/forget-password", method = RequestMethod.GET)
+  @GetMapping(value = "/forget-password")
   public String forgetPassword() {
     return "forget-password";
   }

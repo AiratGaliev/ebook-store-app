@@ -1,7 +1,6 @@
 package com.github.airatgaliev.bookstore.utility;
 
 import com.github.airatgaliev.bookstore.entities.User;
-import com.github.airatgaliev.bookstore.repositories.IUserRepository;
 import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -11,11 +10,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class MailConstructor {
 
-  @Autowired
-  private Environment environment;
+  private final Environment environment;
 
   @Autowired
-  private IUserRepository userRepository;
+  public MailConstructor(Environment environment) {
+    this.environment = environment;
+  }
 
   public SimpleMailMessage constructResetTokenEmail(String appUrl, Locale locale, String token,
       User user, String password) {

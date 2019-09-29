@@ -17,14 +17,20 @@ public class UserServiceImpl implements IUserService {
 
   private static final Logger LOG = LoggerFactory.getLogger(IUserService.class);
 
-  @Autowired
-  private IUserRepository userRepository;
+  private final IUserRepository userRepository;
+
+  private final IRoleRepository roleRepository;
+
+  private final IPasswordResetTokenRepository passwordResetTokenRepository;
 
   @Autowired
-  private IRoleRepository roleRepository;
-
-  @Autowired
-  private IPasswordResetTokenRepository passwordResetTokenRepository;
+  public UserServiceImpl(IUserRepository userRepository,
+      IRoleRepository roleRepository,
+      IPasswordResetTokenRepository passwordResetTokenRepository) {
+    this.userRepository = userRepository;
+    this.roleRepository = roleRepository;
+    this.passwordResetTokenRepository = passwordResetTokenRepository;
+  }
 
   @Override
   public PasswordResetToken getPasswordResetToken(final String token) {
