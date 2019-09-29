@@ -25,7 +25,7 @@ public class User implements UserDetails {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(nullable = false, updatable = false, unique = true)
-  private long userId;
+  private long id;
   @Column(nullable = false, updatable = false, unique = true)
   private String username;
   @Column(nullable = false)
@@ -52,7 +52,7 @@ public class User implements UserDetails {
   }
 
   public long getId() {
-    return userId;
+    return id;
   }
 
   public String getUsername() {
@@ -61,10 +61,6 @@ public class User implements UserDetails {
 
   public String getPassword() {
     return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
   }
 
   public String getEmail() {
@@ -105,17 +101,17 @@ public class User implements UserDetails {
 
   @Override
   public boolean isAccountNonExpired() {
-    return false;
+    return true;
   }
 
   @Override
   public boolean isAccountNonLocked() {
-    return false;
+    return true;
   }
 
   @Override
   public boolean isCredentialsNonExpired() {
-    return false;
+    return true;
   }
 
   @Override
@@ -143,19 +139,13 @@ public class User implements UserDetails {
       return false;
     }
     User user = (User) o;
-    return userId == user.userId &&
-        isEnabled == user.isEnabled &&
-        username.equals(user.username) &&
-        password.equals(user.password) &&
-        email.equals(user.email) &&
-        Objects.equals(phoneNumber, user.phoneNumber) &&
-        Objects.equals(firstName, user.firstName) &&
-        Objects.equals(lastName, user.lastName);
+    return Objects.equals(username, user.username) &&
+        Objects.equals(password, user.password) &&
+        Objects.equals(email, user.email);
   }
 
   @Override
   public int hashCode() {
-    return Objects
-        .hash(userId, username, password, email, phoneNumber, firstName, lastName, isEnabled);
+    return Objects.hash(username, password, email);
   }
 }

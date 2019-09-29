@@ -82,7 +82,7 @@ public class HomeController {
     user.setFirstName(firstName);
     user.setLastName(lastName);
     Role role = new Role();
-    role.setRoleId(1);
+    role.setId(1);
     role.setName("USER_ROLE");
     Set<UserRole> userRoles = new HashSet<>();
     userRoles.add(new UserRole(user, role));

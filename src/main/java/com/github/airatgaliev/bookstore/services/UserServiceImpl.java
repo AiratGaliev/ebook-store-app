@@ -27,18 +27,18 @@ public class UserServiceImpl implements IUserService {
   private IPasswordResetTokenRepository passwordResetTokenRepository;
 
   @Override
-  public PasswordResetToken getPasswordResetToken(String token) {
+  public PasswordResetToken getPasswordResetToken(final String token) {
     return passwordResetTokenRepository.findByToken(token);
   }
 
   @Override
-  public void createPasswordResetTokenForUser(User user, String token) {
-    PasswordResetToken passwordResetToken = new PasswordResetToken(token, user);
+  public void createPasswordResetTokenForUser(final User user, final String token) {
+    final PasswordResetToken passwordResetToken = new PasswordResetToken(token, user);
     passwordResetTokenRepository.save(passwordResetToken);
   }
 
   @Override
-  public User createUser(User user, Set<UserRole> userRoles) throws Exception {
+  public User createUser(User user, Set<UserRole> userRoles) {
     User localUser = userRepository.findByUsername(user.getUsername());
 
     if (localUser != null) {

@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
@@ -20,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Autowired
   private UserSecurityService userSecurityService;
 
-  private PasswordEncoder passwordEncoder() {
+  private BCryptPasswordEncoder passwordEncoder() {
     return SecurityUtility.passwordEncoder();
   }
 
@@ -32,10 +32,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity httpSecurity) throws Exception {
     httpSecurity.authorizeRequests()
-        .antMatchers(PUBLIC_MATCHERS).
-        permitAll().anyRequest().authenticated();
+        .antMatchers(PUBLIC_MATCHERS)
+        .permitAll().anyRequest().authenticated();
     httpSecurity.csrf().disable().cors().disable()
-        .formLogin().failureUrl("/sign-in?error").defaultSuccessUrl("/")
+        .formLogin().failureUrl("/sign-in?error")
+        .defaultSuccessUrl("/")
         .loginPage("/sign-in").permitAll()
         .and()
         .logout().logoutRequestMatcher(new AntPathRequestMatcher("/sign-out"))

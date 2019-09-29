@@ -11,9 +11,6 @@ public class SecurityUtility {
 
   private static final String SALT = "salt";
 
-  public SecurityUtility() {
-  }
-
   @Bean
   public static BCryptPasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder(12, new SecureRandom(SALT.getBytes()));

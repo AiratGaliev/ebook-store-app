@@ -7,5 +7,5 @@ public interface IRoleRepository extends CrudRepository<Role, Long> {
 
   Role findByName(String name);
 
-  Role findByRoleId(long id);
+  Role findById(long id);
 }
