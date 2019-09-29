@@ -1,6 +1,7 @@
 package com.github.airatgaliev.bookstore.utility;
 
 import com.github.airatgaliev.bookstore.entities.User;
+import com.github.airatgaliev.bookstore.repositories.IUserRepository;
 import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -13,16 +14,30 @@ public class MailConstructor {
   @Autowired
   private Environment environment;
 
+  @Autowired
+  private IUserRepository userRepository;
+
   public SimpleMailMessage constructResetTokenEmail(String appUrl, Locale locale, String token,
       User user, String password) {
     String url = appUrl + "/sign-up?token=" + token;
     String message =
         "\nPlease click on this link to verify your email. \n Your password is: " + password;
-    SimpleMailMessage email = new SimpleMailMessage();
-    email.setTo(user.getEmail());
-    email.setSubject("Book Store - Sign Up");
-    email.setText(url + message);
-    email.setFrom(environment.getProperty("support.email"));
-    return email;
+    SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+    simpleMailMessage.setTo(user.getEmail());
+    simpleMailMessage.setSubject("Book Store - Sign Up");
+    simpleMailMessage.setText(url + message);
+    simpleMailMessage.setFrom(environment.getProperty("support.email"));
+    return simpleMailMessage;
+  }
+
+  public SimpleMailMessage constructSendResetPassword(String email, String password) {
+    String message =
+        "Your new password is: " + password;
+    SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+    simpleMailMessage.setTo(email);
+    simpleMailMessage.setSubject("Book Store - Reset Password");
+    simpleMailMessage.setText(message);
+    simpleMailMessage.setFrom(environment.getProperty("support.email"));
+    return simpleMailMessage;
   }
 }

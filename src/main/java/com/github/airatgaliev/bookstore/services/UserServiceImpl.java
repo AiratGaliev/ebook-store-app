@@ -64,4 +64,11 @@ public class UserServiceImpl implements IUserService {
     User user = userRepository.findByEmail(email);
     return null != user;
   }
+
+  @Override
+  public void resetPassword(String email, String password) {
+    User user = userRepository.findByEmail(email);
+    user.setPassword(password);
+    userRepository.save(user);
+  }
 }

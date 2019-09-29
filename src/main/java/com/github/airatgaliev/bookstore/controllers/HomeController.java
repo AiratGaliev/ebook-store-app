@@ -138,7 +138,24 @@ public class HomeController {
     return "cart";
   }
 
-  @RequestMapping("/forget-password")
+  @RequestMapping(value = "/forget-password", method = RequestMethod.POST)
+  public String forgetPassword(@ModelAttribute("email") String email, Model model) {
+    if (!userService.isFoundedUserByEmail(email)) {
+      model.addAttribute("emailNotFound", true);
+      return "forget-password";
+    } else {
+      String newPassword = SecurityUtility.randomPassword();
+      String encryptedPassword = SecurityUtility.passwordEncoder().encode(newPassword);
+      userService.resetPassword(email, encryptedPassword);
+      SimpleMailMessage mailMessage = mailConstructor
+          .constructSendResetPassword(email, newPassword);
+      mailSender.send(mailMessage);
+      model.addAttribute("emailSent", "true");
+      return "redirect:/sign-in";
+    }
+  }
+
+  @RequestMapping(value = "/forget-password", method = RequestMethod.GET)
   public String forgetPassword() {
     return "forget-password";
   }

@@ -16,4 +16,6 @@ public interface IUserService {
   boolean isFoundedUserByUsername(String username);
 
   boolean isFoundedUserByEmail(String email);
+
+  void resetPassword(String email, String password);
 }
