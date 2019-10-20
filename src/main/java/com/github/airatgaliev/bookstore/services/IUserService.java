@@ -18,4 +18,6 @@ public interface IUserService {
   boolean isFoundedUserByEmail(String email);
 
   void resetPassword(String email, String password);
+
+  boolean isAdminRole(String username);
 }

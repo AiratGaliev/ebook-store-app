@@ -6,6 +6,7 @@ import com.github.airatgaliev.bookstore.entities.UserRole;
 import com.github.airatgaliev.bookstore.repositories.IPasswordResetTokenRepository;
 import com.github.airatgaliev.bookstore.repositories.IRoleRepository;
 import com.github.airatgaliev.bookstore.repositories.IUserRepository;
+import com.github.airatgaliev.bookstore.repositories.IUserRoleRepository;
 import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,13 +24,17 @@ public class UserServiceImpl implements IUserService {
 
   private final IPasswordResetTokenRepository passwordResetTokenRepository;
 
+  private final IUserRoleRepository userRoleRepository;
+
   @Autowired
   public UserServiceImpl(IUserRepository userRepository,
       IRoleRepository roleRepository,
-      IPasswordResetTokenRepository passwordResetTokenRepository) {
+      IPasswordResetTokenRepository passwordResetTokenRepository,
+      IUserRoleRepository userRoleRepository) {
     this.userRepository = userRepository;
     this.roleRepository = roleRepository;
     this.passwordResetTokenRepository = passwordResetTokenRepository;
+    this.userRoleRepository = userRoleRepository;
   }
 
   @Override
@@ -76,5 +81,12 @@ public class UserServiceImpl implements IUserService {
     User user = userRepository.findByEmail(email);
     user.setPassword(password);
     userRepository.save(user);
+  }
+
+  @Override
+  public boolean isAdminRole(String username) {
+    User user = userRepository.findByUsername(username);
+    UserRole userRole = userRoleRepository.findUserRoleByUser(user);
+    return userRole.getRole().getName().equals("ADMIN_ROLE");
   }
 }

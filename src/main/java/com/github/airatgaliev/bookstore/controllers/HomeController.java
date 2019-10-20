@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@RequestMapping("/")
 public class HomeController {
 
   private final IUserService userService;
@@ -49,7 +50,7 @@ public class HomeController {
     this.mailConstructor = mailConstructor;
   }
 
-  @RequestMapping("/")
+  @RequestMapping("")
   public String index() {
     return "index";
   }
