@@ -51,13 +51,10 @@ public class UserServiceImpl implements IUserService {
   @Override
   public User createUser(User user, Set<UserRole> userRoles) {
     User localUser = userRepository.findByUsername(user.getUsername());
-
     if (localUser != null) {
       LOG.info("User {} already exists. Nothing will be done", user.getUsername());
     } else {
-      for (UserRole userRole : userRoles) {
-        roleRepository.save(userRole.getRole());
-      }
+      userRoles.forEach(userRole -> roleRepository.save(userRole.getRole()));
       user.getUserRoleSet().addAll(userRoles);
       localUser = userRepository.save(user);
     }
